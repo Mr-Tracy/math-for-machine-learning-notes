@@ -68,4 +68,39 @@ $$
 $$
 
 ![basis vectors](img/basis.svg "basis vectors")
-The key idea is that the matrix transforms the input vector space
+The key idea is that the matrix transforms the input vector space. Think of the matrix as a function that takes input vectors and produces output vectors.
+The simultaneous equation problem is to find the input vector that solves the equations.
+
+$$
+\begin{equation*}
+\begin{gather*}
+x_1
+\begin{bmatrix}
+3  \\
+-3  \\
+\end{bmatrix}
++ x_2
+\begin{bmatrix}
+4 \\
+1  \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+26  \\
+-1  \\
+\end{bmatrix}
+
+\\
+\bm{x}_b =
+ \begin{bmatrix}
+x_1  \\
+x_2  \\
+\end{bmatrix}
+=
+ \begin{bmatrix}
+2  \\
+5 \\
+\end{bmatrix}
+\end{gather*}
+\end{equation*}
+$$
