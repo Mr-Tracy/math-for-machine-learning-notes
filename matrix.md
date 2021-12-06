@@ -212,7 +212,9 @@ a_{n1} & \ a_{n2}  & . & . & \ a_{n,n}\\
 $$
 
 $$
-C_{ik} = \sum_{j} \bm{a_{ij}} \  \bm{b_{jk}}
+C_{rc} = \sum_{j} \bm{a_{rj}} \  \bm{b_{jc}}
 $$
 
-It's clear that the number of A rows should match B colums for non-square matrices.
+It's clear that the number of A rows should match B columns for non-square matrices.
+
+### Einstein summation convention
