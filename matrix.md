@@ -194,27 +194,3 @@ $$
 $$
 (\bm{A_1} \bm{A_2} )\bm{A3} \  =   \bm{A_2}( \bm{A_1}\bm{A_3})
 $$
-
-## Matrices as objects that map one vector on to another (week 4)
-
-Einstein summation convention
-For Square Matrix multiplication
-$ \bm{A}\bm{B} = \bm{C} $
-
-$$
-A =
-\begin{bmatrix}
-a_{11} & \ a_{12}  & . & . & \ a_{1,n}\\
-a_{21} & \ a_{22}  & . & . & \ a_{2,n}\\
-. & .  & . & . & \ .\\
-a_{n1} & \ a_{n2}  & . & . & \ a_{n,n}\\
-\end{bmatrix}
-$$
-
-$$
-C_{rc} = \sum_{j} \bm{a_{rj}} \  \bm{b_{jc}}
-$$
-
-It's clear that the number of A rows should match B columns for non-square matrices.
-
-### Einstein summation convention
