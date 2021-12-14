@@ -139,7 +139,7 @@ $$
 
 ## Matrix Transpose
 
-The transpose $ \vec{A}^T$ is described as:
+The transpose $ \bm{A}^T$ is described as:
 
 $$
     a^T_{ij} = a{ji}
@@ -149,13 +149,13 @@ Here's a concrete example:
 
 $$
 \begin{align*}
-\vec{A} =
+\bm{A} =
 \begin{bmatrix}
 4 &1 \\
 0 & 9
 \end{bmatrix}
 \\
-\vec{A^T} =
+\bm{A^T} =
 \begin{bmatrix}
 4 &0 \\
 1 & 9
@@ -163,11 +163,7 @@ $$
 \end{align*}
 $$
 
-When you have a transfer matrix that consists of basis column vectors that are orthogonal, and of unit length.
-
-### The vectors are called _orthonormal_
-
-### The Matrix is called an _Orthognoal Maxtrix_
+When you have a transfer matrix that consists of basis column vectors that are orthogonal, and of unit length. The vectors are called _orthonormal_. The Matrix is called an _Orthognoal Maxtrix_
 
 $$
 \bm{A} =
@@ -196,3 +192,105 @@ This means that the transpose is the inverse $ \bm{A^T} = \bm{A^{-1}}$
 
 Note: Orthogonal means that all column vectors have zero dot products.$
 \vec{a_i} \cdot \vec{a_j} = 0 $
+
+## Gram-Schmidt process
+
+A process to convert a linearly independent matrix to one that consist of orthonormal column vectors.
+
+$$
+\bm{V} =
+\begin{bmatrix}
+\begin{bmatrix}
+    \ \\
+    \vec{v_1}\\
+    \ \\
+\end{bmatrix}
+\begin{bmatrix}
+    \ \\
+    \vec{v_2} \\
+    \ \\
+\end{bmatrix}
+...
+\begin{bmatrix}
+    \ \\
+    \vec{a_n} \\
+    \ \\
+\end{bmatrix}
+\end{bmatrix}
+$$
+
+The new $ \bm{v_1}^`$ is just normalized to have unit length.
+
+$$
+    \vec{e_1} = { \vec{v_1} \over | \vec{v_1} | }
+$$
+
+To calculate e2, subtract the vector projection of v2 onto e1. The result is orthogonal to e1.Then normalize to unit length.
+
+$$
+    \vec{w_2} =  \vec{v_2}  -   ( \vec{v_2} \cdot \vec{e_1} ) \vec{e_1} \\
+    \vec{e_2} = {  \vec{w_2}  \over |\vec{w_2}| }
+$$
+
+For V3, subtract v3 projected onto e1 and v3 projected on to e2. What remains is orthogonal to both e1 and e2. Normalize to unit length
+
+$$
+    \vec{w_3} =  \vec{v_3}  -   ( \vec{v_3} \cdot \vec{e_1} ) \vec{e_1}
+ -   ( \vec{v_3} \cdot \vec{e_2} ) \vec{e_2}
+    \\
+    \vec{e_3} = {  \vec{w_3}  \over |\vec{w_3}| }
+$$
+
+# Reflecting a plane in a different coordinate system.
+
+## The motivation behind Gram-Schmidt and basis transformations
+
+Reflecting a plane that is defined in the standard $e_x e_y e_z $ system is easy. However, reflecting a plane that is defined by two vectors e.g. $ \begin{bmatrix}  3&1\\ -1&2  \end{bmatrix}$ is much harder. This is where finding a orthogonal matrix makes things easy.
+
+For a motivation example, if we have a matrix B with the first two column vectors defining a plane. And we want to reflect a different vector V about that plane.
+
+$$
+\bm{B} =  \begin{bmatrix}
+    1& 2&3 \\
+    1&0&3 \\
+    1&1&-1 \\
+\end{bmatrix}
+$$
+
+$$
+\vec{v} = \begin{bmatrix} 2 \\ 3 \\ 5  \end{bmatrix}
+$$
+
+Using Gram-Schmidt process on the column vectors of B, the result is:
+
+$$
+\bm{E_b} =  \begin{bmatrix}
+{  1 \over \sqrt(3)}  \begin{bmatrix}  1 \\ 1\\ 1  \end{bmatrix} &
+{  1 \over \sqrt(2)}  \begin{bmatrix}  1 \\ -1\\ 0  \end{bmatrix} &
+{  1 \over \sqrt(6)}  \begin{bmatrix}  1 \\ -1\\ -2  \end{bmatrix}
+ \end{bmatrix}
+$$
+
+A reflection about the plane defined by the first two columns is this following matrix defined not in the normal basis, but B basis
+
+$$
+\bm{T_{b}} = \begin{bmatrix} 1&0&0 \\ 0&1&0 \\ 0&0&-1\end{bmatrix}
+$$
+
+Transforming a vector from normal coordinate to a new basis is:
+
+$$
+ \bm{E_b}^{-1} \  \vec{v}
+$$
+
+And remember for orthogonal matrices composed of orthonormal vectors, the matrix inverse is equal to it's transpose. This can make calculations easier.
+
+$$
+ \bm{E_b}^{-1}  = \bm{E_b}^{T}
+$$
+
+The calculation for the reflected vector v prime:
+
+$$
+\vec{v}^` = \bm{E_b} \ \bm{T_{b}} \  \bm{E_b^T} \ \vec{v}
+$$
